@@ -1,14 +1,7 @@
 import React, {useState, useCallback, useMemo} from 'react';
 import LoginSection from "./LoginSection";
+import PlaylistMenuSection from "./PlaylistMenuSection";
 import PlaylistSection from "./PlaylistSection";
-import {getParamValues} from '../utils/functions';
-
-interface IProps{}
-
-interface IStateProps{
-    token: string;
-}
-
 
 const MainSection: React.FunctionComponent = ():JSX.Element => {
     const [token, setToken] = useState<string>("");
@@ -26,7 +19,12 @@ const MainSection: React.FunctionComponent = ():JSX.Element => {
         if (token === undefined || token === "") {
             return <LoginSection onClickCallback={addTokenCallback} />;
         } else {
-            return <PlaylistSection token={token}/>;
+            return (
+                <>
+                    <PlaylistMenuSection token={token}/>
+                    <PlaylistSection />
+                </>
+            );
         }
     }, [token]);
 

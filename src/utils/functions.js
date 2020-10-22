@@ -1,5 +1,4 @@
-import axios from 'axios';
-
+// helper to deconstruct url for token
 export const getParamValues = (url) => {
   return url
     .slice(1)
@@ -9,17 +8,4 @@ export const getParamValues = (url) => {
       prev[title] = value;
       return prev;
     }, {});
-};
-
-export const setAuthHeader = () => {
-  try {
-    const params = JSON.parse(localStorage.getItem('params'));
-    if (params) {
-      axios.defaults.headers.common[
-        'Authorization'
-      ] = `Bearer ${params.access_token}`;
-    }
-  } catch (error) {
-    console.log('Error setting auth', error);
-  }
 };
