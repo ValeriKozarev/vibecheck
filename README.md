@@ -6,6 +6,7 @@ visualize audio features of spotify playlists to find that perfect vibe
 * spiderchart (JS or separate R script?)
 * organize playlist view to show spiderchart and high-level insights
 * organize project
+* package nicely for others to use :^)
 
 ## Helpful resources:
 * https://github.com/JMPerez/spotify-web-api-js
