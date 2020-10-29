@@ -9,13 +9,11 @@ const MainSection: React.FunctionComponent = ():JSX.Element => {
     const addTokenCallback = useCallback(
         (value: string): void => {
             if (value !== "") {
-                console.log("IN CALLBACK: " + value);
                 setToken(value);
             }
         },[token]);
 
     const body: JSX.Element = useMemo(() => {
-        console.log("IN BODY: " + token);
         if (token === undefined || token === "") {
             return <LoginSection onClickCallback={addTokenCallback} />;
         } else {

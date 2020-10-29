@@ -1,15 +1,18 @@
 import React, {useMemo, useState} from 'react';
 import SpotifyWebApi from "spotify-web-api-js";
 
+// define what a playlist looks like (will be moved later)
 interface IPlaylist {
     id: string;
     name: string;
 }
 
+// a playlist menu row should hold a single playlist
 interface IPlaylistMenuRowProps {
     entry: IPlaylist;
 }
 
+// this FC holds a single playlist and keys with its spotify playlist ID
 const PlaylistMenuRow: React.FunctionComponent<IPlaylistMenuRowProps> = (props: IPlaylistMenuRowProps): JSX.Element => {
     const {entry} = props;
 
@@ -24,12 +27,15 @@ const PlaylistMenuRow: React.FunctionComponent<IPlaylistMenuRowProps> = (props: 
     );
 };
 
+// define a custom type for readability (will be moved later)
 type PlaylistEntries = IPlaylist[];
 
+// allows for mapping of single playlist to single playlistMenuRow FC
 interface IPlaylistMenuRowsProps {
     playlists: PlaylistEntries;
 }
 
+// this FC maps playlists to individulal rows
 const PlaylistMenuRows: React.FunctionComponent<IPlaylistMenuRowsProps> = (props: IPlaylistMenuRowsProps): JSX.Element | null => {
     const {playlists} = props;
 
@@ -43,17 +49,22 @@ const PlaylistMenuRows: React.FunctionComponent<IPlaylistMenuRowsProps> = (props
     return null;
 }
 
+// TODO: when user clicks on a playlist, send that playlistID and the token
+// to the playlist section so it can load that playlist
 
+// this FC needs to know the spotify access token to load user data
 interface IProps {
     token: string;
 }
 
+// top level FC that ties together all the playlist elements defined above
 const PlaylistMenuSection: React.FunctionComponent<IProps> = (props: IProps): JSX.Element => {
     const {token} = props;
     const [myPlaylists, setMyPlaylists] = useState<PlaylistEntries>([]);
     const spotifyWebApi = new SpotifyWebApi();
     spotifyWebApi.setAccessToken(token);
 
+    // load user spotify playlists (will likely be moved later)
     spotifyWebApi.getUserPlaylists().then((response) => {
         let newPlaylists: PlaylistEntries = [];
         response.items.forEach(element => {
