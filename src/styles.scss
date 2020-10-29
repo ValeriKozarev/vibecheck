@@ -1,0 +1,68 @@
+// set background color and fill the entire screen
+body {
+    background-color: #FEFEFA;
+    padding: 0px;
+    margin: 0px;
+}
+
+.app {
+    margin: 1em;
+    border-radius: 15px;
+    background-color: #DCDCDC;
+
+    .header {
+        margin: 1em;
+        padding: 1.5em;
+
+        h2 {
+            font-size: 36px;
+            font-family: "Barlow", sans-serif;
+            text-align: center;
+        }
+    }
+
+    .body {
+        padding: 2em;
+        display: flex;
+        flex-direction: row;
+        flex-wrap: wrap;
+
+        .login {
+            text-align: center;
+        }
+
+        .playlist-menu {
+            float: left;
+            margin-right: 3em;
+            padding: 1em;
+            border: solid 1px;
+            border-radius: 15px;
+            background-color: #a9a9a9;
+            font-family: "Barlow", sans-serif;
+
+            h2 {
+                text-decoration: underline;
+            }
+
+            .instructions {
+                font-weight: bold;
+            }
+        }
+
+        .playlist {
+            margin-left: 2em;
+            border: dotted 1px;
+            border-radius: 15px;
+            background-color: #a9a9a9;
+            padding: 3em;
+            text-align: center;
+            flex-grow: 4;
+        }
+    }
+
+    .footer {
+        padding: 1em;
+        text-align: center;
+        font-size: 16px;
+    }
+}

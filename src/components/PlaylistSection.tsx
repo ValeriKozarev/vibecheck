@@ -6,8 +6,8 @@ interface IProps {
 
 const PlaylistSection: React.FunctionComponent<IProps> = (props: IProps): JSX.Element => {
     return (
-        <div>
-            <p>please select a playlist to begin!</p>
+        <div className="playlist">
+            <p>This is the playlist section</p>
         </div>
     );
 }

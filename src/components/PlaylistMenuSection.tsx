@@ -67,9 +67,10 @@ const PlaylistMenuSection: React.FunctionComponent<IProps> = (props: IProps): JS
     });
 
     return(
-        <div>
-            <p>welcome! token is {token}</p>
-            <br />
+        <div className="playlist-menu">
+            <div className="instructions">
+                <p>Select one of your playlist below!</p>
+            </div>
 
             <h2>Your Playlists</h2>
             <table>

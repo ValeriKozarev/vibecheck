@@ -29,7 +29,7 @@ const MainSection: React.FunctionComponent = ():JSX.Element => {
     }, [token]);
 
     return(
-        <div>
+        <div className="body">
             {body}
         </div>
     );

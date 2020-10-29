@@ -5,7 +5,7 @@ import FooterSection from "./FooterSection";
 
 const App: React.FunctionComponent = (): JSX.Element => {
     return(
-        <div>
+        <div className="app">
             <HeaderSection />
             <MainSection />
             <FooterSection />
