@@ -1,16 +1,16 @@
 import React from 'react';
 
 interface IProps {
-    playlistId?: string;
+    playlistID?: string;
     token?: string;
 }
 
 const PlaylistSection: React.FunctionComponent<IProps> = (props: IProps): JSX.Element => {
-    const {playlistId, token} = props;
+    const {playlistID, token} = props;
 
     return (
         <div className="playlist">
-            <p>This is the playlist section</p>
+            {playlistID === "" ? <p>Please select a playlist!</p> : <p>PlaylistID is {playlistID}</p> }
         </div>
     );
 }

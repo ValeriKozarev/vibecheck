@@ -4,6 +4,7 @@ import PlaylistMenuSection from "./PlaylistMenuSection";
 import PlaylistSection from "./PlaylistSection";
 
 const MainSection: React.FunctionComponent = ():JSX.Element => {
+    // token state and callback
     const [token, setToken] = useState<string>("");
 
     const addTokenCallback = useCallback(
@@ -13,18 +14,28 @@ const MainSection: React.FunctionComponent = ():JSX.Element => {
             }
         },[token]);
 
+    // playlistID state and callback
+    const [playlistID, setPlaylistID] = useState<string>("");
+
+    const setPlaylistCallback = useCallback(
+        (value: string): void => {
+            if (value !== "") {
+                setPlaylistID(value);
+            }
+        },[playlistID]);
+
     const body: JSX.Element = useMemo(() => {
         if (token === undefined || token === "") {
             return <LoginSection onClickCallback={addTokenCallback} />;
         } else {
             return (
                 <>
-                    <PlaylistMenuSection token={token}/>
-                    <PlaylistSection />
+                    <PlaylistMenuSection token={token} playlistSelectCallback={setPlaylistCallback}/>
+                    <PlaylistSection token={token} playlistID={playlistID}/>
                 </>
             );
         }
-    }, [token]);
+    }, [token, playlistID]);
 
     return(
         <div className="body">
