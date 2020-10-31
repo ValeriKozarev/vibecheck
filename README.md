@@ -2,7 +2,7 @@
 visualize audio features of spotify playlists to find that perfect vibe
 
 ## TODOs:
-* decided this app is simple enough to not need redux -> need to add the playlist section to display info about an individual playlist 
+* handle webpack error related to passing playlistID from playlistmenu to playlist sections
 * spiderchart (JS or separate R script?)
 * organize playlist view to show spiderchart and high-level insights
 * organize project
