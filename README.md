@@ -8,6 +8,7 @@ visualize audio features of spotify playlists to find that perfect vibe
 * organize project
 * need to figure out best practice for .env file
 * package nicely for others to use :^)
+* hi sof!
 
 ## Helpful resources:
 * https://github.com/JMPerez/spotify-web-api-js
