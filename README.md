@@ -2,10 +2,10 @@
 visualize audio features of spotify playlists to find that perfect vibe
 
 ## TODOs:
-* handle webpack error related to passing playlistID from playlistmenu to playlist sections
-* spiderchart (JS or separate R script?)
-* organize playlist view to show spiderchart and high-level insights
-* organize project
+* compute and display playlist stats
+* re-organize project
+* create spiderchart for audio features (JS or separate R script?)
+* add some simple high-level insights derived from stats
 * need to figure out best practice for .env file
 * package nicely for others to use :^)
 
