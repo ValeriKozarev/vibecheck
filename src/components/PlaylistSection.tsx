@@ -1,4 +1,4 @@
-import React from 'react';
+import React, {useState} from 'react';
 import SpotifyWebApi from "spotify-web-api-js";
 
 
@@ -11,7 +11,7 @@ const PlaylistSection: React.FunctionComponent<IProps> = (props: IProps): JSX.El
     const {playlistID, token} = props;
 
     // TODO: use an interface
-    const audio_feature_dict: {[id: string]: number; } = {
+    const [audio_feature_dict, setAudioFeatures] = useState<{[id:string]:number;}>({
         "acousticness": 0,
         "danceability": 0,
         "energy": 0,
@@ -21,7 +21,7 @@ const PlaylistSection: React.FunctionComponent<IProps> = (props: IProps): JSX.El
         "speechiness": 0,
         "tempo": 0,
         "valence": 0
-    };
+    });
 
     const spotifyWebApi = new SpotifyWebApi();
     if (token) {
@@ -61,6 +61,7 @@ const PlaylistSection: React.FunctionComponent<IProps> = (props: IProps): JSX.El
                 audio_feature_dict["speechiness"] /= tracks.length;
                 audio_feature_dict["tempo"] /= tracks.length;
                 audio_feature_dict["valence"] /= tracks.length;
+                setAudioFeatures(audio_feature_dict);
             })
         });
     }
