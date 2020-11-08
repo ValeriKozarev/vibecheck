@@ -1,4 +1,4 @@
-import React, {useMemo, useState, useCallback} from 'react';
+import React, {useMemo, useState, useCallback, useEffect} from 'react';
 import SpotifyWebApi from "spotify-web-api-js";
 
 // define what a playlist looks like (will be moved later)
@@ -18,7 +18,6 @@ const PlaylistMenuRow: React.FunctionComponent<IPlaylistMenuRowProps> = (props: 
     const {entry, playlistSelectCallback} = props;
 
     const handlePlaylistSelect = useCallback(() => {
-        console.log("clicked on playlist ",entry.id);
         playlistSelectCallback(entry.id);
     },[]);
 
@@ -69,21 +68,25 @@ interface IProps {
 const PlaylistMenuSection: React.FunctionComponent<IProps> = (props: IProps): JSX.Element => {
     const {token, playlistSelectCallback} = props;
     const [myPlaylists, setMyPlaylists] = useState<PlaylistEntries>([]);
+
     const spotifyWebApi = new SpotifyWebApi();
     spotifyWebApi.setAccessToken(token);
 
-    // load user spotify playlists (will likely be moved later)
-    spotifyWebApi.getUserPlaylists().then((response) => {
-        let newPlaylists: PlaylistEntries = [];
-        response.items.forEach(element => {
-            let playlist: IPlaylist = {
-                id: element.id,
-                name: element.name
-            };
-            newPlaylists.push(playlist);
+    // putting this into useEffect should mean it only executes once
+    useEffect(() => {
+        // load user spotify playlists (will likely be moved later)
+        spotifyWebApi.getUserPlaylists().then((response) => {
+            let newPlaylists: PlaylistEntries = [];
+            response.items.forEach(element => {
+                let playlist: IPlaylist = {
+                    id: element.id,
+                    name: element.name
+                };
+                newPlaylists.push(playlist);
+            });
+            setMyPlaylists(newPlaylists);
         });
-        setMyPlaylists(newPlaylists);
-    });
+    },[]);
 
     return(
         <div className="playlist-menu">
