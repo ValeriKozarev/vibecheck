@@ -1,16 +1,17 @@
 import React, {useCallback, useEffect} from 'react';
 import {Button} from 'react-bootstrap';
 import {getParamValues} from "../utils/functions";
+import {IOnClickCallback} from "../data";
 
-
-interface IOnClickCallback {
-    (value: string): void;
-}
 
 interface IProps {
     onClickCallback: IOnClickCallback;
 }
 
+/**
+ * Function Component starts Spotify Web API OAUTH flow once user clicks on
+ * the login button
+ */
 const LoginSection: React.FunctionComponent<IProps> = (props: IProps) => {
     const {onClickCallback} = props;
     const {REACT_APP_CLIENT_ID,

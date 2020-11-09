@@ -1,19 +1,17 @@
 import React, {useMemo, useState, useCallback, useEffect} from 'react';
+import {PlaylistEntries} from "../types";
+import {IPlaylist, IPlaylistSelectCallback} from "../data";
 import SpotifyWebApi from "spotify-web-api-js";
 
-// define what a playlist looks like (will be moved later)
-interface IPlaylist {
-    id: string;
-    name: string;
-}
-
-// a playlist menu row should hold a single playlist
 interface IPlaylistMenuRowProps {
     entry: IPlaylist;
     playlistSelectCallback: IPlaylistSelectCallback;
 }
 
-// this FC holds a single playlist and keys with its spotify playlist ID
+/**
+ * Private component that represents a single row (playlist) in the playlist
+ * menu component
+ */
 const PlaylistMenuRow: React.FunctionComponent<IPlaylistMenuRowProps> = (props: IPlaylistMenuRowProps): JSX.Element => {
     const {entry, playlistSelectCallback} = props;
 
@@ -32,16 +30,14 @@ const PlaylistMenuRow: React.FunctionComponent<IPlaylistMenuRowProps> = (props: 
     );
 };
 
-// define a custom type for readability (will be moved later)
-type PlaylistEntries = IPlaylist[];
-
-// allows for mapping of single playlist to single playlistMenuRow FC
 interface IPlaylistMenuRowsProps {
     playlists: PlaylistEntries;
     playlistSelectCallback: IPlaylistSelectCallback;
 }
 
-// this FC maps playlists to individulal rows
+/**
+ * Private component that maps playlist objects to playlistmenurow components
+ */
 const PlaylistMenuRows: React.FunctionComponent<IPlaylistMenuRowsProps> = (props: IPlaylistMenuRowsProps): JSX.Element | null => {
     const {playlists,playlistSelectCallback} = props;
 
@@ -55,16 +51,16 @@ const PlaylistMenuRows: React.FunctionComponent<IPlaylistMenuRowsProps> = (props
     return null;
 }
 
-interface IPlaylistSelectCallback {
-    (value: string): void;
-}
-
 interface IProps {
     token: string;
     playlistSelectCallback: IPlaylistSelectCallback;
 }
 
-// top level FC that ties together all the playlist elements defined above
+/**
+ * The top level component which builds out the hierarchy of the playlist menu
+ * This component defines the list of playlists as State to maintain and invokes
+ * the Spotify Web API wrapper to fetch playlist data for the user
+ */
 const PlaylistMenuSection: React.FunctionComponent<IProps> = (props: IProps): JSX.Element => {
     const {token, playlistSelectCallback} = props;
     const [myPlaylists, setMyPlaylists] = useState<PlaylistEntries>([]);
@@ -102,4 +98,5 @@ const PlaylistMenuSection: React.FunctionComponent<IProps> = (props: IProps): JS
     );
 }
 
+// only the top level component is public
 export default PlaylistMenuSection;

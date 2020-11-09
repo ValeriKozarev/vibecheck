@@ -3,6 +3,11 @@ import LoginSection from "./LoginSection";
 import PlaylistMenuSection from "./PlaylistMenuSection";
 import PlaylistSection from "./PlaylistSection";
 
+/**
+ * Function Component which toggles between the login prompt and the main screen
+ * of vibecheck. Token state is set only upon login and the mainsection will not be
+ * displayed until that workflow is complete
+ */
 const MainSection: React.FunctionComponent = ():JSX.Element => {
     // token state and callback
     const [token, setToken] = useState<string>("");

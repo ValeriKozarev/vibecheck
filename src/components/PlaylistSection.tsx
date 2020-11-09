@@ -36,8 +36,6 @@ const PlaylistSection: React.FunctionComponent<IProps> = (props: IProps): JSX.El
                 tracks.push(item.track.id);
             });
             spotifyWebApi.getAudioFeaturesForTracks(tracks).then((response) => {
-                //console.log(response);
-
                 response.audio_features.forEach(track => {
                     // there must be a more elegant way to do this
                     audio_feature_dict["acousticness"] += track.acousticness;
@@ -65,10 +63,6 @@ const PlaylistSection: React.FunctionComponent<IProps> = (props: IProps): JSX.El
             })
         });
     }
-
-    // TODO: need to make dict part of state because theres no values if I read it here
-    // but there are values in the function above
-    console.log(audio_feature_dict["acousticness"]);
 
     return (
         <div className="playlist">
