@@ -1,5 +1,5 @@
 import React from 'react';
-import ReactDOM, {render} from 'react-dom';
+import {render} from 'react-dom';
 import './styles.scss';
 import App from './components/App';
 

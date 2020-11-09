@@ -1,6 +1,6 @@
 import React, {useState} from 'react';
 import SpotifyWebApi from "spotify-web-api-js";
-
+import {AudioFeaturesDict} from "../types";
 
 interface IProps {
     playlistID?: string;
@@ -10,18 +10,7 @@ interface IProps {
 const PlaylistSection: React.FunctionComponent<IProps> = (props: IProps): JSX.Element => {
     const {playlistID, token} = props;
 
-    // TODO: use an interface
-    const [audio_feature_dict, setAudioFeatures] = useState<{[id:string]:number;}>({
-        "acousticness": 0,
-        "danceability": 0,
-        "energy": 0,
-        "instrumentalness": 0,
-        "liveness": 0,
-        "loudness": 0,
-        "speechiness": 0,
-        "tempo": 0,
-        "valence": 0
-    });
+    const [audio_feature_dict, setAudioFeatures] = useState<AudioFeaturesDict>(new AudioFeaturesDict());
 
     const spotifyWebApi = new SpotifyWebApi();
     if (token) {
