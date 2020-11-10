@@ -8,15 +8,15 @@ export type PlaylistEntries = IPlaylist[];
 export class AudioFeaturesDict {
     // audio features defined by Spotify
     // definitions can be found here: https://developer.spotify.com/documentation/web-api/reference/tracks/get-audio-features/
-    acousticness: number;
-    danceability: number;
-    energy: number;
-    instrumentalness: number;
-    liveness: number;
-    loudness: number;
-    speechiness: number;
-    tempo: number;
-    valence: number;
+    public acousticness: number;
+    public danceability: number;
+    public energy: number;
+    public instrumentalness: number;
+    public liveness: number;
+    public loudness: number;
+    public speechiness: number;
+    public tempo: number;
+    public valence: number;
 
     // default constructor should initialize all of these fields to 0
     constructor() {
