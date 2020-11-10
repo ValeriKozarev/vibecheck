@@ -2,7 +2,6 @@
 visualize audio features of spotify playlists to find that perfect vibe
 
 ## TODOs:
-* re-organize project and clean up files
 * create spiderchart for audio features (JS or separate R script?)
 * add some simple high-level insights derived from stats
 * overhaul styling and make mobile-friendly
