@@ -1,9 +1,11 @@
 # vibecheck
 visualize audio features of spotify playlists to find that perfect vibe
 
+check out the demo of what I've got so far: https://youtu.be/uvCc7RG3epo
+
 ## TODOs:
 * add some simple high-level insights derived from stats
-* overhaul styling and make mobile-friendly
+* needs to be styled and made responsive
 * package nicely for others to use :^)
 
 ## Helpful resources:
