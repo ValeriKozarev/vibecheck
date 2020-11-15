@@ -94,10 +94,10 @@ const PlaylistSection: React.FunctionComponent<IProps> = (props: IProps): JSX.El
                         //     "feature": "loudness",
                         //     "score": newPlaylistAudioFeatures.loudness
                         // },
-                        // {
-                        //     "feature": "speechiness",
-                        //     "score": newPlaylistAudioFeatures.speechiness
-                        // },
+                        {
+                            "feature": "speechiness",
+                            "score": newPlaylistAudioFeatures.speechiness
+                        },
                         // taking out tempo because it dominates the radar chart
                         // {
                         //     "feature": "tempo",
@@ -114,13 +114,13 @@ const PlaylistSection: React.FunctionComponent<IProps> = (props: IProps): JSX.El
         }
     },[playlistID]);
 
-    // TODO: make a section for Stats and place within PlaylistSection
     return (
         <div className="playlist">
             {playlistID === "" ? <p>Please select a playlist!</p> : null }
             <br />
             {playlistID !=="" ? <div className="radar">
-                                    <RadarChart outerRadius={90} width={730} height={250} data={radarData}>
+                                    <h2>Key Audio Feature Breakdown</h2>
+                                    <RadarChart outerRadius={90} width={425} height={250} data={radarData}>
                                         <PolarGrid />
                                         <PolarAngleAxis dataKey="feature" />
                                         <Radar name="audio features" dataKey="score" stroke="#8884d8" fill="#8884d8" fillOpacity={0.6} />
@@ -128,7 +128,7 @@ const PlaylistSection: React.FunctionComponent<IProps> = (props: IProps): JSX.El
                                 </div> : null }
             <br />
             {playlistID !== "" ? <div className="stats">
-                                    <p>Playlist Stats!</p>
+                                    <h2>All Playlist Stats</h2>
                                     <p>acousticness: {playlistAudioFeatures["acousticness"]}</p>
                                     <p>danceability: {playlistAudioFeatures.danceability}</p>
                                     <p>energy: {playlistAudioFeatures.energy}</p>

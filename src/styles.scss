@@ -59,6 +59,18 @@ body {
             text-align: center;
             flex-grow: 4;
         }
+
+        .radar {
+            background-color: white;
+            margin: 0 auto;
+            width: 450px;
+        }
+
+        .stats {
+            border-style: solid 1px;
+            text-align: center;
+            margin: 2em;
+        }
     }
 
     .footer {
