@@ -19,12 +19,20 @@ const PlaylistSection: React.FunctionComponent<IProps> = (props: IProps): JSX.El
 
     const [radarData, setRadarData] = useState<object[]>();
 
+    const [playlistName, setPlaylistName] = useState<string>("");
+
     useEffect(() => {
         if (token && playlistID){
             // TODO: Last time I tried pulling this out into a separate file it became a mess because
             // of typing the API promises but I would still like to move it
             const spotifyWebApi = new SpotifyWebApi();
             spotifyWebApi.setAccessToken(token);
+
+            spotifyWebApi.getPlaylist(playlistID).then(
+                function (response) {
+                    setPlaylistName(response.name);
+                }
+            );
 
             spotifyWebApi.getPlaylistTracks(playlistID).then(
                 // get tracks in playlist
@@ -116,7 +124,7 @@ const PlaylistSection: React.FunctionComponent<IProps> = (props: IProps): JSX.El
 
     return (
         <div className="playlist">
-            {playlistID === "" ? <p>Please select a playlist!</p> : null }
+            {playlistID === "" ? <p>Please select a playlist!</p> : <p>Vibecheck: <em>{playlistName}</em></p> }
             <br />
             {playlistID !=="" ? <div className="radar">
                                     <h2>Key Audio Feature Breakdown</h2>
