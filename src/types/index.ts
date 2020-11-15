@@ -8,6 +8,7 @@ export type PlaylistEntries = IPlaylist[];
 export class AudioFeaturesDict {
     // audio features defined by Spotify
     // definitions can be found here: https://developer.spotify.com/documentation/web-api/reference/tracks/get-audio-features/
+    [feature: string]: number;
     public acousticness: number;
     public danceability: number;
     public energy: number;
