@@ -4,6 +4,7 @@ visualize audio features of spotify playlists to find that perfect vibe
 check out the demo of what I've got so far: https://youtu.be/uvCc7RG3epo
 
 ## TODOs:
+* Biggest to-do is to rewrite this with Vue! I like that way more than React
 * add some simple high-level insights derived from stats
 * needs to be styled and made responsive
 * package nicely for others to use :^)
